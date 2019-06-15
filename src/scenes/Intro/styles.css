@@ -23,3 +23,13 @@
     width: 100%;
     font-size: 2rem;
 }
+.character {
+    display: flex;
+    justify-content: center;
+}
+.countdown {
+    font-size: 1rem;
+}
+.title {
+    font-size: 2rem;
+}

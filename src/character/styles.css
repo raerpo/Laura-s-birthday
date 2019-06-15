@@ -1,0 +1,23 @@
+.sprite {
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 1203%;
+}
+.girl {
+    background-image: url('./girls_sprites.png');
+    background-position-y: -406px;
+}
+.girl-1 {
+    background-position-x: -300px;
+}
+.girl-2 {
+    background-position-x: -400px;
+    
+}
+.girl-3 {
+    background-position-x: -500px;
+}
+.girl-4 {
+    background-position-x: -400px;
+}
