@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
+import { Intro } from "./scenes";
+import firebase from "./firebase";
+
+import "./styles.css";
+
+const App = () => {
+  const [birthDayTime, setBirthDayTime] = useState(null);
+  const [serverTime, setServerTime] = useState(null);
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("birthday")
+      .on("value", snapshot => setBirthDayTime(snapshot.val()));
+    firebase
+      .database()
+      .ref("/.info/serverTimeOffset")
+      .once("value")
+      .then(snapshop => setServerTime(snapshop.val() + Date.now()));
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Intro loading={!birthDayTime || !serverTime} birthDayTime={birthDayTime} />
+    </main>
   );
-}
+};
 
 export default App;
