@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Loading from "../../components/Loading";
 import Girl from "../../character/girl";
 import { useInterval } from "../../utils";
 import { default as countdownHelper } from "countdown";
@@ -18,7 +19,7 @@ const Intro = ({ loading, birthDayTime }) => {
     <section className="intro">
       <div className={`intro-content ${loading ? "loading" : ""}`}>
         {loading ? (
-          <p>Loading...</p>
+          <Loading />
         ) : (
           <div>
             <p className="title">Laura's Birthday</p>
